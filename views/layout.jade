@@ -6,7 +6,7 @@
 //if IE 8
   html.no-js.ie8.oldie(lang='en') 
 //[if gt IE 8]><!
-html.no-js(lang='en')
+html.no-js(lang='es')
   //<![end if]
   head
     meta(charset='utf-8')
@@ -15,27 +15,52 @@ html.no-js(lang='en')
     meta(name="description", content=description)
     meta(name="author", content=author)
     meta(name="viewport", content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    style
+      body {
+      padding-top: 50px;
+      padding-bottom: 20px;
+      }
+    link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/css/style.css')
     //-script(src='js/libs/modernizr-2.0.6.min.js')
-  body
+  body(ng-app='controlbobinasApp')
+    //if lt IE 7
+      p.browsehappy
+        | You are using an
+        strong outdated
+        | browser. Please
+        a(href='http://browsehappy.com/') upgrade your browser
+        | to improve your experience.
     block header
+      .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='#') Control Bobinas SMD
+          .navbar-collapse.collapse
+            div(auto-active)
+              ul.nav.navbar-nav
+                li.active
+                  a(href='#') Entreda
+
+                li
+                  a(href='#/salida') Salida
+          //
+            /.navbar-collapse
+
 
     block content
 
     block footer
       footer
-        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
-        script
-          window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\\/script>')
-        //-script(defer, src='js/plugins.js')
-        script(defer, src='/js/script.js')
-        script(defer, src='/socket.io/socket.io.js')
-          script
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview'],['_trackPageLoadTime']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        //if lt IE 7
-          script(defer, src='//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js')
-          script(defer)
-            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        script(src='js/vendor/jquery-1.11.1.min.js')
+        script(src='js/vendor/bootstrap.min.js')
+        script(src='js/vendor/angular.min.js')
+        script(src='js/vendor/angular-route.min.js')
+        script(src='js/vendor/angular-animate.min.js')
+        script(src='js/main.js')

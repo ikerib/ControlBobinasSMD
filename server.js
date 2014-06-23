@@ -1,8 +1,15 @@
 //setup Dependencies
 var connect = require('connect')
     , express = require('express')
-    , io = require('socket.io')
-    , port = (process.env.PORT || 8081);
+    , port = (process.env.PORT || 8082);
+
+// New Code
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/controlbobinas');
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 
 //Setup Express
 var server = express.createServer();
@@ -11,7 +18,7 @@ server.configure(function(){
     server.set('view options', { layout: false });
     server.use(connect.bodyParser());
     server.use(express.cookieParser());
-    server.use(express.session({ secret: "shhhhhhhhh!"}));
+    server.use(express.session({ secret: "lawuglahfñoq8yf-1b2l12bro8y!"}));
     server.use(connect.static(__dirname + '/static'));
     server.use(server.router);
 });
@@ -37,20 +44,6 @@ server.error(function(err, req, res, next){
 });
 server.listen( port);
 
-//Setup Socket.IO
-var io = io.listen(server);
-io.sockets.on('connection', function(socket){
-  console.log('Client Connected');
-  socket.on('message', function(data){
-    socket.broadcast.emit('server_message',data);
-    socket.emit('server_message',data);
-  });
-  socket.on('disconnect', function(){
-    console.log('Client Disconnected.');
-  });
-});
-
-
 ///////////////////////////////////////////
 //              Routes                   //
 ///////////////////////////////////////////
@@ -60,9 +53,9 @@ io.sockets.on('connection', function(socket){
 server.get('/', function(req,res){
   res.render('index.jade', {
     locals : { 
-              title : 'Your Page Title'
-             ,description: 'Your Page Description'
-             ,author: 'Your Name'
+              title : 'Control Bobinas SMD'
+             ,description: 'Control Bobinas SMD'
+             ,author: 'Iker Ibarguren'
              ,analyticssiteid: 'XXXXXXX' 
             }
   });
