@@ -20,12 +20,14 @@ controlbobinasApp.config(function ($routeProvider) {
 });
 
 controlbobinasApp.controller('entradaController', function ($scope, $http) {
-    
-    $scope.tabs = [
-        { title:'Dynamic Title 1', content:'Dynamic content 1' },
-        { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
-      ];
-    
+
+    $scope.mytabs = {
+        static1: true,
+        static2: false,
+        static3: false,
+        static4: false
+    }
+
     $scope.radioModel = "bottom";
 
     $scope.myData = [
@@ -53,6 +55,51 @@ controlbobinasApp.controller('entradaController', function ($scope, $http) {
         showGroupPanel: true
     };
 
+    $scope.siguiente = function(tab) {
+        switch (tab) {
+            case 0:
+                $scope.mytabs.static2 = true;
+                break;
+            case 1:
+                $scope.mytabs.static3 = true;
+                break;
+            case 2:
+                $scope.mytabs.static4 = true;
+                break;
+        }
+    };
+
 });
 controlbobinasApp.controller('salidaController', function ($scope, $http) {});
 
+controlbobinasApp.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+controlbobinasApp.directive('triggerFocusOn', function($timeout) {
+    return {
+        link: function(scope, element, attrs) {
+            element.bind('click', function() {
+                $timeout(function() {
+                    var otherElement = document.querySelector('#' + attrs.triggerFocusOn);
+
+                    if (otherElement) {
+                        otherElement.focus();
+                    }
+                    else {
+                        console.log("Can't find element: " + attrs.triggerFocusOn);
+                    }
+                });
+            });
+        }
+    };
+});

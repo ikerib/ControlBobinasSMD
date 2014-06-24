@@ -4,33 +4,41 @@
 	<div class="row">
 		<form>
 			<tabset>
-		    	<tab heading="Orden de Facbricación">
+		    	<tab heading="Orden de Facbricación" active="mytabs.static1">
 		    		<div class="row">&nbsp;</div>
 					<div class="col-md-6 col-md-offset-3">
 			        	<div class="input-group input-group-xs">
-				            <input type="text" class="form-control" placeholder="">
+				            <input type="text" class="form-control" placeholder="" ng-enter="siguiente(0)" autofocus>
 				            <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
 				        </div>	
 					</div>
 		    	</tab>
-		    	<tab heading="Top / Bottom">
+		    	<tab heading="Top / Bottom" active="mytabs.static2">
 		    		<div class="row">&nbsp;</div>
 		    		<div class="col-md-6 col-md-offset-3">
 						<div class="btn-group">
-					        <label class="btn btn-success btn-lg" ng-model="radioModel" btn-radio="'bottom'" uncheckable>bottom</label>
-					        <label class="btn btn-success btn-lg" ng-model="radioModel" btn-radio="'top'" uncheckable>top</label>
+					        <label class="btn btn-success btn-lg" ng-model="radioModel" btn-radio="'bottom'" uncheckable ng-click="siguiente(1)"  trigger-focus-on="codentrada">bottom</label>
+					        <label class="btn btn-success btn-lg" ng-model="radioModel" btn-radio="'top'" uncheckable ng-click="siguiente(1)"  trigger-focus-on="codentrada">top</label>
 					    </div>
 					</div>
 		    	</tab>
-		    	<tab heading="Cod. Entrada">
+		    	<tab heading="Cod. Entrada" active="mytabs.static3" trigger-focus-on="codentrada">
 		    		<div class="row">&nbsp;</div>
 					<div class="col-md-6 col-md-offset-3">
 			        	<div class="input-group input-group-xs">
-				            <input type="text" class="form-control" placeholder="">
+				            <input id="codentrada" type="text" class="form-control" placeholder=""  ng-enter="siguiente(2)" focus-me="shouldBeOpen">
 				            <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
 				        </div>	
 					</div>
 		    	</tab>
+                <tab heading="Confirmar" active="mytabs.static4">
+                    <div class="row">&nbsp;</div>
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="input-group input-group-xs">
+                            <button class="btn btn-success">Confirmar</button>
+                        </div>
+                    </div>
+                </tab>
 		    </tabset>
 		</form>
 		<div class="row">&nbsp;</div>
