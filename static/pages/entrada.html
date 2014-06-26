@@ -1,6 +1,6 @@
 
 <div class="row">&nbsp;</div>
-<div class="jumbotron">
+<div class="jumbotron">{{kk}}
 	<div class="row">
 		<form>
 			<tabset>
@@ -8,7 +8,7 @@
 		    		<div class="row">&nbsp;</div>
 					<div class="col-md-6 col-md-offset-3">
 			        	<div class="input-group input-group-xs">
-				            <input type="text" class="form-control" placeholder="" ng-enter="siguiente(0)" autofocus>
+				            <input type="text" class="form-control" placeholder="" ng-enter="checkof()" ng-model="registro.of" autofocus>
 				            <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
 				        </div>	
 					</div>
@@ -16,6 +16,8 @@
 		    	<tab heading="Top / Bottom" active="mytabs.static2">
 		    		<div class="row">&nbsp;</div>
 		    		<div class="col-md-6 col-md-offset-3">
+                        <span class="label label-primary">Oferta: {{ registro.of }}</span>
+                        <span class="label label-primary">Articulo: {{ registro.articulo }}</span>
 						<div class="btn-group">
 					        <label class="btn btn-success btn-lg" ng-model="radioModel" btn-radio="'bottom'" uncheckable ng-click="siguiente(1)"  trigger-focus-on="codentrada">bottom</label>
 					        <label class="btn btn-success btn-lg" ng-model="radioModel" btn-radio="'top'" uncheckable ng-click="siguiente(1)"  trigger-focus-on="codentrada">top</label>

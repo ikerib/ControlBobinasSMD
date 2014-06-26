@@ -1,12 +1,11 @@
 //setup Dependencies
 var connect = require('connect')
     , express = require('express')
+    , api = require('./routes/api')
     , port = (process.env.PORT || 8082);
 
 // New Code
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/controlbobinas');
+
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -44,6 +43,8 @@ server.error(function(err, req, res, next){
 });
 server.listen( port);
 
+
+
 ///////////////////////////////////////////
 //              Routes                   //
 ///////////////////////////////////////////
@@ -61,6 +62,7 @@ server.get('/', function(req,res){
   });
 });
 
+server.get('/api/getarticulo/:of', api.getarticulo);
 
 //A Route for Creating a 500 Error (Useful to keep around)
 server.get('/500', function(req, res){
