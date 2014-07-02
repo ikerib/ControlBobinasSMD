@@ -15,10 +15,16 @@ exports.getarticulo = function(req, res){
 //        else res.json(bugs);
 //    });
 
-    var resp = {
-        'Articulo': '3CI00112233'
-    };
-
+    if ( of === "123" ) {
+        var resp = {
+            'Articulo': '3CI00112233'
+        };
+    } else {
+        var resp = {
+            'Articulo' : '3CI'
+        }
+    }
+    
     res.json(resp);
 
 

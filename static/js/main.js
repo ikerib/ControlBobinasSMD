@@ -6,16 +6,19 @@ var app = angular.module('controlbobinasApp', ['ngRoute', 'ui.bootstrap','ngGrid
 app.config(function ($routeProvider) {
     $routeProvider
 
-        // route for the home page
         .when('/', {
             templateUrl: 'pages/entrada.html',
             controller: 'entradaController'
         })
 
-        // route for the about page
         .when('/salida', {
             templateUrl: 'pages/salida.html',
             controller: 'salidaController'
+        })
+    
+        .when('/procesos', {
+            templateUrl: 'pages/procesos.html',
+            controller: 'procesosController'
         })
 });
 
