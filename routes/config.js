@@ -5,6 +5,7 @@
 var monk = require('monk');
 var db = monk('localhost:27017/controlbobinas');
 var collection = db.get('config');
+//var mongo = require('mongo');
 
 exports.findAll = function(req, res) {
 
@@ -30,21 +31,27 @@ exports.productospost = function(req, res){
 };
 
 exports.productosput = function(req, res){
-    var id = req.params.id;
 
     var producto = {
         articulo: req.body.articulo,
         operacion: req.body.operacion.nombre
-    }
+    };
 
-    collection.update({'_id':new BSON.ObjectID(id)}, producto, {safe:true}, function(err, result) {
-        if (err) {
-            console.log('Error updating wine: ' + err);
-            res.send({'error':'An error has occurred'});
-        } else {
-            console.log('' + result + ' document(s) updated');
-            res.send(producto);
-        }
+    var id = req.params.id;
+    collection.findAndModify({_id: id}, {$set: producto}, {multi:false}, function(err, bug){
+        if (err) res.json(500, err);
+        else if (bug) res.json(bug);
+        else res.json(404);
     });
 
-};
+}
+
+exports.productosdel = function(req, res) {
+
+    var id = req.params.id;
+    collection.remove({_id: id}, function(err){
+        if (err) res.json(500, err);
+        else res.json(204);
+    });
+
+}

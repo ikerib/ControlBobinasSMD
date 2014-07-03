@@ -55,19 +55,20 @@ server.listen( port);
 server.get('/', function(req,res){
   res.render('index.jade', {
     locals : { 
-              title : 'Control Bobinas SMD'
-             ,description: 'Control Bobinas SMD'
-             ,author: 'Iker Ibarguren'
-             ,analyticssiteid: 'XXXXXXX' 
-            }
+      title : 'Control Bobinas SMD'
+     ,description: 'Control Bobinas SMD'
+     ,author: 'Iker Ibarguren'
+     ,analyticssiteid: 'XXXXXXX'
+    }
   });
 });
 
 server.get('/api/getarticulo/:of', api.getarticulo);
 
-server.get  ('/config/productos',       config.findAll);
-server.post ('/config/productos',       config.productospost);
-server.put  ('/config/productos/:id',   config.productosput);
+server.get      ('/config/productos',       config.findAll);
+server.post     ('/config/productos',       config.productospost);
+server.put      ('/config/productos/:id',   config.productosput);
+server.delete('/config/productos/:id',      config.productosdel);
 
 //A Route for Creating a 500 Error (Useful to keep around)
 server.get('/500', function(req, res){

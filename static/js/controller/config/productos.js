@@ -28,11 +28,11 @@ app.controller('productosController', function ($scope, $http) {
                 editableCellTemplate: '<select ng-model="myForm.operacion" name="operacion" ng-options="ope.nombre for ope in operaciones"></select>'
              },
             { field: '', displayName: 'Guardar', enableCellEdit: false,
-                cellTemplate: '<button class="btn btn-primary btn-sm" id="editBtn" type="button"  ng-click="saveItem(row.entity.articulo, row.entity.operacion)" >Guardar</button>'
+                cellTemplate: '<button class="btn btn-primary btn-sm" id="editBtn" type="button"  ng-click="saveItem(row.entity._id, row.entity.articulo, row.entity.operacion)" >Guardar</button>'
             },
 
             { field: '', displayName: 'Eliminar', enableCellEdit: false,
-                cellTemplate: '<button class="btn btn-danger btn-sm" id="editBtn" type="button"  ng-click="removeRow(row.entity.articulo, row.entity.operacion)" >Eliminar</button>'
+                cellTemplate: '<button class="btn btn-danger btn-sm" id="editBtn" type="button"  ng-click="removeRow(row.entity._id, row.entity.articulo, row.entity.operacion)" >Eliminar</button>'
             }
         ]
 
@@ -60,8 +60,8 @@ app.controller('productosController', function ($scope, $http) {
     };
 
 
-    $scope.saveItem = function (articulo, operacion) {
-        $http.put('/config/productos', {
+    $scope.saveItem = function (id, articulo, operacion) {
+        $http.put('/config/productos/' + id, {
             articulo: articulo,
             operacion: operacion
         }).
@@ -70,7 +70,18 @@ app.controller('productosController', function ($scope, $http) {
         });
     }
 
+    $scope.removeRow = function (id, name, surname) {;
+        // Delete from Grid
+        var index = this.row.rowIndex;
 
+        $scope.gridOptions.selectItem(index, false);
+        $scope.myData.splice(index, 1);
+        
+        // Server side
+        $http.delete('/config/productos/' + id).
+        success(function (data) {
+        });
+    };
 
 });
 
