@@ -1,52 +1,57 @@
 
-<div class="row">&nbsp;</div>
-<div class="jumbotron">{{kk}}
-	<div class="row">
-		<form>
-			<tabset>
-		    	<tab heading="Orden de Facbricación" active="mytabs.static1">
-		    		<div class="row">&nbsp;</div>
-					<div class="col-md-6 col-md-offset-3">
-			        	<div class="input-group input-group-xs">
-				            <input type="text" class="form-control" placeholder="" ng-enter="checkof()" ng-model="registro.of" autofocus>
-				            <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
-				        </div>	
-					</div>
-		    	</tab>
-		    	<tab heading="Top / Bottom" active="mytabs.static2">
-		    		<div class="row">&nbsp;</div>
-		    		<div class="col-md-6 col-md-offset-3">
-                        <span class="label label-primary">Oferta: {{ registro.of }}</span>
-                        <span class="label label-primary">Articulo: {{ registro.articulo }}</span>
-						<div class="btn-group">
-					        <label class="btn btn-success btn-lg" ng-model="radioModel" btn-radio="'bottom'" uncheckable ng-click="siguiente(1)"  trigger-focus-on="codentrada">bottom</label>
-					        <label class="btn btn-success btn-lg" ng-model="radioModel" btn-radio="'top'" uncheckable ng-click="siguiente(1)"  trigger-focus-on="codentrada">top</label>
-					    </div>
-					</div>
-		    	</tab>
-		    	<tab heading="Cod. Entrada" active="mytabs.static3" trigger-focus-on="codentrada">
-		    		<div class="row">&nbsp;</div>
-					<div class="col-md-6 col-md-offset-3">
-			        	<div class="input-group input-group-xs">
-				            <input id="codentrada" type="text" class="form-control" placeholder=""  ng-enter="siguiente(2)" focus-me="shouldBeOpen">
-				            <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
-				        </div>	
-					</div>
-		    	</tab>
-                <tab heading="Confirmar" active="mytabs.static4">
-                    <div class="row">&nbsp;</div>
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="input-group input-group-xs">
-                            <button class="btn btn-success">Confirmar</button>
-                        </div>
-                    </div>
-                </tab>
-		    </tabset>
-		</form>
-		<div class="row">&nbsp;</div>
-	</div>
-</div>
 
-<div class="row">
-	<div class="gridStyle" ng-grid="gridOptions"></div>
-</div>
+<section class="content-header">
+    <h1>
+        Entradas
+        <small>Control de bobinas SMD</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Entrada</li>
+    </ol>
+</section>
+<section class="content">
+	<h2 class="page-header">Sigue las instrucciones paso a paso</h2>
+	<div class="row">
+		<div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-bullhorn"></i>
+                    <h3 class="box-title">Proceso de entrada</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    
+
+					<div class="row">
+						<div class="col-md-1">&nbsp;</div>
+						<div class="col-md-10">
+					    <!-- Custom Tabs -->
+					    <div class="nav-tabs-custom">
+					        <ul class="nav nav-tabs">
+					            <li class="active"><a href="#tab_1" data-toggle="tab">Orden Fabricación</a></li>
+					            <li class=""><a href="#tab_2" data-toggle="tab">Top/Bottom</a></li>
+					            <li class""><a href="#tab_3" data-toggle="tab">Bobina</a></li>
+					            
+					        </ul>
+					        <div class="tab-content">
+					            <div class="tab-pane active" id="tab_1">
+					            	<div class="input-group">
+                                    	<input type="text" class="form-control" placeholder="" ng-enter="checkof()" ng-model="registro.of" autofocus>
+                                    	<span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+                                	</div>
+					            </div><!-- /.tab-pane -->
+					            <div class="tab-pane" id="tab_2">
+					                
+					            </div><!-- /.tab-pane -->
+					        </div><!-- /.tab-content -->
+					    </div><!-- nav-tabs-custom -->
+					    <div class="col-md-1">&nbsp;</div>
+					</div>
+
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+	</div>
+</section>
+

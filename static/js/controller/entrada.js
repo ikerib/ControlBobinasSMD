@@ -25,22 +25,6 @@ app.controller('entradaController', function ($scope, $http) {
 
     ];
 
-    $scope.gridOptions = {
-        data: 'myData',
-        columnDefs: [
-            { field: 'articulo', displayName: 'Artículo' },
-            { field: 'of', displayName: 'Orden' },
-            { field: 'Fecha', displayName: 'Fecha' },
-            { field: 'bobinaori', displayName: 'Bobina origen' },
-            { field: 'descripcion', displayName: 'Descripción' },
-            { field: 'alimentador', displayName: 'Alimentador' },
-            { field: 'bobinades', displayName: 'Bobina destino' },
-            { field: 'obs', displayName: 'Observaciones' }
-        ],
-        showGroupPanel: true
-    };
-
-
 
     $scope.checkof = function() {
 

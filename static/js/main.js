@@ -1,7 +1,8 @@
 /**
  * Created by ikerib on 23/06/14.
  */
-var app = angular.module('controlbobinasApp', ['ngRoute', 'ui.bootstrap','ngGrid']);
+
+var app = angular.module('controlbobinasApp', ['ngRoute', 'ngGrid']);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -19,6 +20,11 @@ app.config(function ($routeProvider) {
         .when('/procesos', {
             templateUrl: 'pages/procesos.html',
             controller: 'procesosController'
+        })
+
+        .when('/config/productos', {
+            templateUrl: 'pages/config/productos.html',
+            controller: 'productosController'
         })
 });
 

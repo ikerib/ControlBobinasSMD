@@ -2,6 +2,7 @@
 var connect = require('connect')
     , express = require('express')
     , api = require('./routes/api')
+    , config = require('./routes/config')
     , port = (process.env.PORT || 8082);
 
 // New Code
@@ -63,6 +64,10 @@ server.get('/', function(req,res){
 });
 
 server.get('/api/getarticulo/:of', api.getarticulo);
+
+server.get  ('/config/productos',       config.findAll);
+server.post ('/config/productos',       config.productospost);
+server.put  ('/config/productos/:id',   config.productosput);
 
 //A Route for Creating a 500 Error (Useful to keep around)
 server.get('/500', function(req, res){
