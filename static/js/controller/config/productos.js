@@ -2,7 +2,7 @@
  * Created by ikerib on 26/06/14.
  */
 
-app.controller('productosController', function ($scope, $http) {
+app.controller('productosController', ['growlNotifications', '$scope', '$http', function(growlNotifications, $scope, $http) {
 
     $scope.myData = [];
     $scope.updateok=false;
@@ -35,7 +35,6 @@ app.controller('productosController', function ($scope, $http) {
                 cellTemplate: '<button class="btn btn-danger btn-sm" id="editBtn" type="button"  ng-click="removeRow(row.entity._id, row.entity.articulo, row.entity.operacion)" >Eliminar</button>'
             }
         ]
-
     };
 
     $scope.addRow = function () {
@@ -43,19 +42,22 @@ app.controller('productosController', function ($scope, $http) {
     };
 
     $scope.insertRow = function () {
-        $scope.myData.push({
-            articulo: $scope.myForm.articulo,
-            operacion: $scope.myForm.operacion.nombre
-        });
-        $scope.hidden = false;
-
+        
        // Persist on database
         $http.post('/config/productos', {
             articulo: $scope.myForm.articulo,
             operacion: $scope.myForm.operacion
         }).
         success(function (data) {
-            
+            growlNotifications.add('Insertado con éxito', 'success');
+        
+            $scope.myData.push({
+                articulo: $scope.myForm.articulo,
+                operacion: $scope.myForm.operacion.nombre
+            });
+            $scope.hidden = false;
+        }).error(function(data, status, headers, config) {
+            growlNotifications.add('Ha habido un problema a la hora de eliminar: No ha sido posible conectarse con el servidor','danger');
         });
     };
 
@@ -66,22 +68,26 @@ app.controller('productosController', function ($scope, $http) {
             operacion: operacion
         }).
         success(function (data) {
-            $scope.updateok=true;
+            growlNotifications.add('Actualizado con éxito','success');
+        }).error(function(data, status, headers, config) {
+            growlNotifications.add('Ha habido un problema a la hora de eliminar: No ha sido posible conectarse con el servidor','danger');
         });
     }
 
     $scope.removeRow = function (id, name, surname) {;
         // Delete from Grid
         var index = this.row.rowIndex;
-
-        $scope.gridOptions.selectItem(index, false);
-        $scope.myData.splice(index, 1);
-        
+               
         // Server side
         $http.delete('/config/productos/' + id).
         success(function (data) {
+            $scope.gridOptions.selectItem(index, false);
+            $scope.myData.splice(index, 1);
+            growlNotifications.add('Eliminado con éxito','success');
+        }).error(function(data, status, headers, config) {
+            growlNotifications.add('Ha habido un problema a la hora de eliminar: No ha sido posible conectarse con el servidor','danger');
         });
     };
 
-});
+}]);
 

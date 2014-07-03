@@ -32,13 +32,10 @@ exports.productospost = function(req, res){
 
 exports.productosput = function(req, res){
 
-    var producto = {
-        articulo: req.body.articulo,
-        operacion: req.body.operacion.nombre
-    };
-
     var id = req.params.id;
-    collection.findAndModify({_id: id}, {$set: producto}, {multi:false}, function(err, bug){
+    var body = req.body;
+    delete body._id;
+    collection.findAndModify({_id: id}, {$set: body}, {multi:false}, function(err, bug){
         if (err) res.json(500, err);
         else if (bug) res.json(bug);
         else res.json(404);

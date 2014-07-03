@@ -2,7 +2,7 @@
  * Created by ikerib on 23/06/14.
  */
 
-var app = angular.module('controlbobinasApp', ['ngRoute', 'ngGrid']);
+var app = angular.module('controlbobinasApp', ['ngRoute', 'ngGrid', 'growlNotifications', 'ngSanitize']);
 
 app.config(function ($routeProvider) {
     $routeProvider
