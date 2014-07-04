@@ -20,34 +20,42 @@
                     <h3 class="box-title">Proceso de entrada</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    
 
 					<div class="row">
 						<div class="col-md-1">&nbsp;</div>
 						<div class="col-md-10">
-					    <!-- Custom Tabs -->
-					    <div class="nav-tabs-custom">
-					        <ul class="nav nav-tabs">
-					            <li class="active"><a href="#tab_1" data-toggle="tab">Orden Fabricación</a></li>
-					            <li class=""><a href="#tab_2" data-toggle="tab">Top/Bottom</a></li>
-					            <li class=""><a href="#tab_3" data-toggle="tab">Bobina</a></li>
-					            
-					        </ul>
-					        <div class="tab-content">
-					            <div class="tab-pane active" id="tab_1">
-					            	<div class="input-group">
-                                    	<input type="text" class="form-control" placeholder="" ng-enter="checkof()" ng-model="registro.of" autofocus>
-                                    	<span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
-                                	</div>
-					            </div><!-- /.tab-pane -->
-					            <div class="tab-pane" id="tab_2">
-					                
-					            </div><!-- /.tab-pane -->
-					        </div><!-- /.tab-content -->
-					    </div><!-- nav-tabs-custom -->
+					    	<!-- Custom Tabs -->
+						    <div class="nav-tabs-custom">
+						        <ul class="nav nav-tabs">
+						            <li class="active"><a href="#tab_1" data-toggle="tab">Orden Fabricación</a></li>
+						            <li class=""><a href="#tab_2" data-toggle="tab">Top/Bottom</a></li>
+						            <li class=""><a href="#tab_3" data-toggle="tab">Bobina</a></li>
+						            
+						        </ul>
+						        <div class="tab-content">
+						            <div class="tab-pane active" id="tab_1">
+						            	<div class="input-group">
+	                                    	<input type="text" class="form-control" placeholder="" ng-enter="checkof()" ng-model="registro.of" autofocus>
+	                                    	<span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+	                                	</div>
+						            </div><!-- /.tab-pane -->
+						            <div class="tab-pane" id="tab_2">
+						                
+						            </div><!-- /.tab-pane -->
+						        </div><!-- /.tab-content -->
+						    </div><!-- nav-tabs-custom -->
+						</div>
 					    <div class="col-md-1">&nbsp;</div>
 					</div>
 
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<div growl-notifications></div>	
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					
 
                 </div><!-- /.box-body -->
             </div><!-- /.box -->

@@ -68,7 +68,7 @@ server.get('/api/getarticulo/:of', api.getarticulo);
 server.get      ('/config/productos',       config.findAll);
 server.post     ('/config/productos',       config.productospost);
 server.put      ('/config/productos/:id',   config.productosput);
-server.delete('/config/productos/:id',      config.productosdel);
+server.delete   ('/config/productos/:id',   config.productosdel);
 
 //A Route for Creating a 500 Error (Useful to keep around)
 server.get('/500', function(req, res){

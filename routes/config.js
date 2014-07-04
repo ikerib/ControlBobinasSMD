@@ -4,8 +4,7 @@
 
 var monk = require('monk');
 var db = monk('localhost:27017/controlbobinas');
-var collection = db.get('config');
-//var mongo = require('mongo');
+var collection = db.get('aux_productos');
 
 exports.findAll = function(req, res) {
 
