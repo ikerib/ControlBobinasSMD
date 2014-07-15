@@ -26,7 +26,7 @@ app.controller('entradaController', ['growlNotifications', '$scope', '$http', fu
         }).success( function(data, status) {
 
             $scope.registro.created_at = new Date();
-            $scope.registro.articulo = data.Articulo;
+            $scope.registro.articulo = data.articulo;
             $scope.mytabs.static2 = true;            
            
         }).error(function(data, status, headers, config) {

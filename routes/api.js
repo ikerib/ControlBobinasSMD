@@ -32,11 +32,11 @@ exports.getarticulo = function(req, res){
 
                 switch (lau) {
                     case "0":
-                        var resp = {'articulo': item.articulo,'operacion': 'Top-Bottom'};
+                        var resp = {'articulo': item[0].articulo,'operacion': 'Top-Bottom'};
                         res.json(resp);
                         break;
                     case "T":
-                        var resp = {'articulo': item.articulo,'operacion': 'Top'};
+                        var resp = {'articulo': item[0].articulo,'operacion': 'Top'};
                         res.json(resp);
                         break;
                     default:
